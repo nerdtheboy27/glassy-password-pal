@@ -91,12 +91,16 @@ const PasswordManager = () => {
 
   return (
     <div className="container max-w-4xl mx-auto p-6 space-y-8 animate-fade-up">
-      <div className="text-center space-y-2">
-        <h1 className="text-4xl font-bold text-primary">Password Manager</h1>
-        <p className="text-muted-foreground">Securely store and manage your passwords</p>
+      <div className="text-center space-y-4">
+        <h1 className="text-6xl font-bold text-gradient tracking-tight">
+          Password Manager
+        </h1>
+        <p className="text-lg text-white/60">
+          Securely store and manage your passwords
+        </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="glass p-6 rounded-xl space-y-4">
+      <form onSubmit={handleSubmit} className="glass card-3d p-6 rounded-xl space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Input
             type="text"
@@ -115,35 +119,35 @@ const PasswordManager = () => {
         </div>
         <Button 
           type="submit" 
-          className="w-full bg-primary hover:bg-primary-darker transition-colors"
+          className="w-full bg-primary hover:bg-primary-darker transition-all duration-300 transform hover:scale-[1.02]"
         >
           {editingId ? 'Update Password' : 'Add Password'}
         </Button>
       </form>
 
-      <div className="table-glass">
+      <div className="table-glass card-3d">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-white/10">
-                <th className="px-6 py-4 text-left">Name</th>
-                <th className="px-6 py-4 text-left">Password</th>
-                <th className="px-6 py-4 text-center">Strength</th>
-                <th className="px-6 py-4 text-center">Pwned</th>
-                <th className="px-6 py-4 text-right">Actions</th>
+                <th className="px-6 py-4 text-left text-white/70">Name</th>
+                <th className="px-6 py-4 text-left text-white/70">Password</th>
+                <th className="px-6 py-4 text-center text-white/70">Strength</th>
+                <th className="px-6 py-4 text-center text-white/70">Pwned</th>
+                <th className="px-6 py-4 text-right text-white/70">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/10">
               {entries.map((entry) => (
-                <tr key={entry.id} className="hover:bg-white/5 transition-colors">
-                  <td className="px-6 py-4">{entry.name}</td>
+                <tr key={entry.id} className="hover:bg-white/5 transition-all duration-300">
+                  <td className="px-6 py-4 font-medium">{entry.name}</td>
                   <td className="px-6 py-4 flex items-center space-x-2">
-                    <span className="font-mono">
+                    <span className="font-mono text-white/90">
                       {showPassword[entry.id] ? entry.password : '••••••••'}
                     </span>
                     <button
                       onClick={() => togglePasswordVisibility(entry.id)}
-                      className="text-primary-darker hover:text-primary transition-colors"
+                      className="text-white/60 hover:text-primary transition-colors"
                     >
                       {showPassword[entry.id] ? 
                         <EyeOff size={18} /> : 
@@ -152,7 +156,7 @@ const PasswordManager = () => {
                     </button>
                     <button
                       onClick={() => copyToClipboard(entry.password)}
-                      className="text-primary-darker hover:text-primary transition-colors"
+                      className="text-white/60 hover:text-primary transition-colors"
                     >
                       <Copy size={18} />
                     </button>
@@ -167,22 +171,22 @@ const PasswordManager = () => {
                   </td>
                   <td className="px-6 py-4 text-center">
                     {entry.pwnedCount > 0 ? (
-                      <span className="text-red-500">{entry.pwnedCount} times</span>
+                      <span className="text-red-400">{entry.pwnedCount} times</span>
                     ) : (
-                      <span className="text-green-500">Safe</span>
+                      <span className="text-green-400">Safe</span>
                     )}
                   </td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end space-x-2">
                       <button
                         onClick={() => handleEdit(entry)}
-                        className="text-primary-darker hover:text-primary transition-colors"
+                        className="text-white/60 hover:text-primary transition-colors transform hover:scale-110"
                       >
                         <Edit size={18} />
                       </button>
                       <button
                         onClick={() => handleDelete(entry.id)}
-                        className="text-red-400 hover:text-red-500 transition-colors"
+                        className="text-red-400/60 hover:text-red-400 transition-colors transform hover:scale-110"
                       >
                         <Trash size={18} />
                       </button>

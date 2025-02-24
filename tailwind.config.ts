@@ -31,7 +31,7 @@ export default {
           lighter: "#D6BCFA",
         },
         glass: {
-          DEFAULT: "rgba(255, 255, 255, 0.2)",
+          DEFAULT: "rgba(255, 255, 255, 0.05)",
           dark: "rgba(0, 0, 0, 0.2)",
         },
       },
@@ -39,11 +39,11 @@ export default {
         "fade-up": {
           "0%": {
             opacity: "0",
-            transform: "translateY(10px)",
+            transform: "translateY(10px) scale(0.95)",
           },
           "100%": {
             opacity: "1",
-            transform: "translateY(0)",
+            transform: "translateY(0) scale(1)",
           },
         },
         shimmer: {
@@ -51,14 +51,32 @@ export default {
             transform: "translateX(100%)",
           },
         },
+        float: {
+          "0%, 100%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-5px)",
+          },
+        }
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
         shimmer: "shimmer 2s infinite",
+        float: "float 3s ease-in-out infinite",
       },
-      backdropFilter: {
-        'none': 'none',
-        'blur': 'blur(20px)',
+      typography: {
+        DEFAULT: {
+          css: {
+            color: "hsl(var(--foreground))",
+            h1: {
+              background: "linear-gradient(to right, #fff, #ccc)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            },
+          },
+        },
       },
     },
   },
